@@ -1,0 +1,24 @@
+# Configurações de autenticação e servidor
+$smtpServer = "smtp.gmail.com"
+$smtpPort = 587
+$username = "seu-email@gmail.com"
+$password = "sua-senha-de-app-do-google"
+
+# Dados da Mensagem
+$to = "destinatario@dominio.com"
+$subject = "Assunto do E-mail"
+$body = "Este é o corpo do e-mail enviado via script PowerShell."
+
+# Criar e enviar o e-mail
+$Message = New-Object System.Net.Mail.MailMessage
+$Message.From = $username
+$Message.To.Add($to)
+$Message.Subject = $subject
+$Message.Body = $body
+
+$smtp = New-Object System.Net.Mail.SmtpClient($smtpServer, $smtpPort)
+$smtp.EnableSsl = $true
+$smtp.Credentials = New-Object System.Net.NetworkCredential($username, $password)
+
+$smtp.Send($Message)
+Write-Host "E-mail enviado com sucesso!" -ForegroundColor Green
