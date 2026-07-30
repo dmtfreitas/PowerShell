@@ -1,4 +1,4 @@
-﻿
+
 # rasdial_VPN_Wiser_Tecnologia.ps1
 
 $name = 'VPN_Wiser_Tecnologia'
@@ -24,6 +24,8 @@ while ($true) {
 
         rasdial.exe $name $user $password | Out-Null
 
+        $vpn = Get-VpnConnection -Name $name -ErrorAction SilentlyContinue
+
         if ($vpn.ConnectionStatus -eq 'Connected') { 
             Write-Host 'VPN VPN_Wiser_Tecnologia is connected!' -ForegroundColor Green -ErrorAction SilentlyContinue
         } else {
@@ -32,6 +34,6 @@ while ($true) {
 
     }
 
-    Start-Sleep -Seconds 3600 -ErrorAction SilentlyContinue
+    Start-Sleep -Seconds 60 -ErrorAction SilentlyContinue
 
 }
