@@ -2,8 +2,8 @@
 # rasdial_VPN_Wiser_Tecnologia.ps1
 
 $name = 'VPN_Wiser_Tecnologia'
-$user = 'paulo.licciardi'
-$password = '0404@Wi'
+$user = ''
+$password = ''
 
 $vpn = Get-VpnConnection -Name $name -ErrorAction SilentlyContinue
 
